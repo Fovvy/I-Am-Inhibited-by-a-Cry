@@ -46,7 +46,7 @@ gem "thruster", require: false
 gem "tailwindcss-rails"
 
 # QR Code generation
-gem "rqrcode", "~> 2.0"
+gem "rqrcode", "~> 3.1"
 
 # Charting library
 gem "chartkick"
