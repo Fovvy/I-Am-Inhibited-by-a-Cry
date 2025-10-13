@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Pola - Create Polls & Collect Votes Instantly" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js", defer: true %>
+  </head>
+
+  <body class="bg-gray-50 min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 fixed w-full top-0 z-50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center">
+            <%= link_to root_path, class: "flex items-center space-x-3" do %>
+              <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-xl">P</span>
+              </div>
+              <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Pola</span>
+            <% end %>
+          </div>
+          <div class="flex items-center space-x-4">
+            <%= link_to "Browse Polls", polls_path, class: "text-gray-600 hover:text-gray-900 font-medium" %>
+            <%= link_to "Create Poll", new_poll_path, class: "bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg" %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <% if notice.present? %>
+      <div class="fixed top-20 right-4 z-50 animate-fade-in">
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg shadow-lg">
+          <div class="flex items-center">
+            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <p class="text-green-700 font-medium"><%= notice %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <% if alert.present? %>
+      <div class="fixed top-20 right-4 z-50 animate-fade-in">
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg shadow-lg">
+          <div class="flex items-center">
+            <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+            </svg>
+            <p class="text-red-700 font-medium"><%= alert %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+      <%= yield %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-16">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center text-gray-600">
+          <p class="font-semibold">Pola - Simple, Fast, Free Polls</p>
+          <p class="text-sm mt-2">Create polls and collect votes instantly. No sign-up required.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
