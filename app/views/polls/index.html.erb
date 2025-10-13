@@ -1,14 +1,14 @@
 <!-- Hero Section -->
-<div class="text-center mb-16">
-  <h1 class="text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+<div class="text-center mb-12">
+  <h1 class="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
     Create Polls in Seconds
   </h1>
-  <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+  <p class="text-lg md:text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
     Simple, fast, and free. No sign-up required. Create polls, share links, and see results in real-time.
   </p>
-  <div class="flex justify-center gap-4">
-    <%= link_to new_poll_path, class: "bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1" do %>
-      <svg class="w-6 h-6 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <div class="flex flex-col sm:flex-row justify-center gap-3">
+    <%= link_to new_poll_path, class: "inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5" do %>
+      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
       </svg>
       Create Your First Poll
@@ -17,58 +17,58 @@
 </div>
 
 <!-- Features Grid -->
-<div class="grid md:grid-cols-3 gap-8 mb-16">
-  <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-100">
-    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-      <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12">
+  <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-sm hover:shadow-md transition-all duration-200 border border-blue-200">
+    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-3">
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
       </svg>
     </div>
-    <h3 class="text-xl font-bold mb-2">Lightning Fast</h3>
-    <p class="text-gray-600">Create a poll in under 30 seconds. No registration or setup needed.</p>
+    <h3 class="text-lg font-bold mb-2 text-gray-900">Lightning Fast</h3>
+    <p class="text-sm text-gray-700">Create a poll in under 30 seconds. No registration or setup needed.</p>
   </div>
 
-  <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-100">
-    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-      <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-5 shadow-sm hover:shadow-md transition-all duration-200 border border-purple-200">
+    <div class="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-3">
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
       </svg>
     </div>
-    <h3 class="text-xl font-bold mb-2">Easy Sharing</h3>
-    <p class="text-gray-600">Get a unique link and QR code to share your poll anywhere.</p>
+    <h3 class="text-lg font-bold mb-2 text-gray-900">Easy Sharing</h3>
+    <p class="text-sm text-gray-700">Get a unique link and QR code to share your poll anywhere.</p>
   </div>
 
-  <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow duration-200 border border-gray-100">
-    <div class="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4">
-      <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-lg p-5 shadow-sm hover:shadow-md transition-all duration-200 border border-pink-200 sm:col-span-2 lg:col-span-1">
+    <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg flex items-center justify-center mb-3">
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
       </svg>
     </div>
-    <h3 class="text-xl font-bold mb-2">Real-Time Results</h3>
-    <p class="text-gray-600">Watch votes come in live with beautiful charts and visualizations.</p>
+    <h3 class="text-lg font-bold mb-2 text-gray-900">Real-Time Results</h3>
+    <p class="text-sm text-gray-700">Watch votes come in live with beautiful charts and visualizations.</p>
   </div>
 </div>
 
 <!-- Recent Polls -->
 <% if @polls.any? %>
-  <div class="mt-16">
-    <h2 class="text-3xl font-bold mb-8 text-gray-900">Recent Polls</h2>
-    <div class="grid md:grid-cols-2 gap-6">
+  <div class="mt-12">
+    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-900">Recent Polls</h2>
+    <div class="grid sm:grid-cols-2 gap-4">
       <% @polls.each do |poll| %>
-        <div class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-200 border border-gray-100 hover:border-blue-200">
+        <div class="bg-white rounded-lg p-4 md:p-5 shadow-sm hover:shadow-md transition-all duration-200 border border-gray-200 hover:border-blue-300">
           <%= link_to poll_path(poll.share_code), class: "block" do %>
-            <div class="flex items-start justify-between mb-3">
-              <h3 class="text-xl font-bold text-gray-900 flex-1"><%= poll.title %></h3>
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-base md:text-lg font-bold text-gray-900 flex-1 pr-2 line-clamp-2"><%= poll.title %></h3>
               <% if poll.closed? %>
-                <span class="ml-3 px-3 py-1 bg-red-100 text-red-600 text-xs font-semibold rounded-full">Closed</span>
+                <span class="shrink-0 px-2 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full">Closed</span>
               <% else %>
-                <span class="ml-3 px-3 py-1 bg-green-100 text-green-600 text-xs font-semibold rounded-full">Active</span>
+                <span class="shrink-0 px-2 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">Active</span>
               <% end %>
             </div>
             <% if poll.description.present? %>
-              <p class="text-gray-600 mb-4 line-clamp-2"><%= poll.description %></p>
+              <p class="text-sm text-gray-600 mb-3 line-clamp-2"><%= poll.description %></p>
             <% end %>
-            <div class="flex items-center justify-between text-sm text-gray-500">
+            <div class="flex items-center justify-between text-xs md:text-sm text-gray-500">
               <span class="flex items-center">
                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
@@ -76,7 +76,7 @@
                 </svg>
                 <%= poll.options.count %> options
               </span>
-              <span class="flex items-center">
+              <span class="flex items-center font-semibold">
                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
                 </svg>

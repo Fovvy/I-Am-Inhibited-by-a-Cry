@@ -19,22 +19,25 @@
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js", defer: true %>
   </head>
 
-  <body class="bg-gray-50 min-h-screen">
+  <body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
     <!-- Navbar -->
-    <nav class="bg-white shadow-sm border-b border-gray-200 fixed w-full top-0 z-50">
+    <nav class="bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-200 fixed w-full top-0 z-50">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
+        <div class="flex justify-between items-center h-14">
           <div class="flex items-center">
-            <%= link_to root_path, class: "flex items-center space-x-3" do %>
-              <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span class="text-white font-bold text-xl">P</span>
+            <%= link_to root_path, class: "flex items-center space-x-2" do %>
+              <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-sm">
+                <span class="text-white font-bold text-lg">P</span>
               </div>
-              <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Pola</span>
+              <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Pola</span>
             <% end %>
           </div>
-          <div class="flex items-center space-x-4">
-            <%= link_to "Browse Polls", polls_path, class: "text-gray-600 hover:text-gray-900 font-medium" %>
-            <%= link_to "Create Poll", new_poll_path, class: "bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg" %>
+          <div class="flex items-center space-x-2 sm:space-x-3">
+            <%= link_to "Browse", polls_path, class: "hidden sm:inline text-gray-600 hover:text-gray-900 font-medium text-sm" %>
+            <%= link_to new_poll_path, class: "bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 sm:px-5 py-2 rounded-lg font-semibold text-sm hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg" do %>
+              <span class="hidden sm:inline">Create Poll</span>
+              <span class="sm:hidden">Create</span>
+            <% end %>
           </div>
         </div>
       </div>
@@ -68,16 +71,16 @@
     <% end %>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
       <%= yield %>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-16">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <footer class="bg-white/80 backdrop-blur-sm border-t border-gray-200 mt-12">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="text-center text-gray-600">
-          <p class="font-semibold">Pola - Simple, Fast, Free Polls</p>
-          <p class="text-sm mt-2">Create polls and collect votes instantly. No sign-up required.</p>
+          <p class="font-semibold text-sm">Pola - Simple, Fast, Free Polls</p>
+          <p class="text-xs mt-1">Create polls and collect votes instantly. No sign-up required.</p>
         </div>
       </div>
     </footer>
