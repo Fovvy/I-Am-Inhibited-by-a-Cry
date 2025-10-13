@@ -19,24 +19,31 @@
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js", defer: true %>
   </head>
 
-  <body class="bg-gradient-to-br from-gray-50 to-blue-50 min-h-screen">
+  <body class="min-h-screen bg-gray-50">
+    <!-- Subtle Pattern Background -->
+    <div class="fixed inset-0 pointer-events-none" style="background-color: #f9fafb; background-image: radial-gradient(circle at 1px 1px, #e5e7eb 1px, transparent 0); background-size: 40px 40px;"></div>
+
     <!-- Navbar -->
-    <nav class="bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-200 fixed w-full top-0 z-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-14">
+    <nav class="bg-white border-b border-gray-200 fixed w-full top-0 z-50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
           <div class="flex items-center">
-            <%= link_to root_path, class: "flex items-center space-x-2" do %>
-              <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-sm">
-                <span class="text-white font-bold text-lg">P</span>
+            <%= link_to root_path, class: "flex items-center gap-3 group" do %>
+              <div class="w-9 h-9 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-xl">P</span>
               </div>
-              <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Pola</span>
+              <span class="text-xl font-bold text-gray-900">Pola</span>
             <% end %>
           </div>
-          <div class="flex items-center space-x-2 sm:space-x-3">
-            <%= link_to "Browse", polls_path, class: "hidden sm:inline text-gray-600 hover:text-gray-900 font-medium text-sm" %>
-            <%= link_to new_poll_path, class: "bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 sm:px-5 py-2 rounded-lg font-semibold text-sm hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg" do %>
-              <span class="hidden sm:inline">Create Poll</span>
-              <span class="sm:hidden">Create</span>
+          <div class="flex items-center gap-3">
+            <%= link_to polls_path, class: "hidden sm:inline-flex items-center px-4 py-2 text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors" do %>
+              Browse
+            <% end %>
+            <%= link_to new_poll_path, class: "inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-semibold text-sm transition-colors" do %>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+              </svg>
+              <span class="hidden sm:inline">Create</span>
             <% end %>
           </div>
         </div>
@@ -45,42 +52,48 @@
 
     <!-- Flash Messages -->
     <% if notice.present? %>
-      <div class="fixed top-20 right-4 z-50 animate-fade-in">
-        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg shadow-lg">
+      <div class="fixed top-20 right-4 z-50 max-w-md">
+        <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg shadow-lg">
           <div class="flex items-center">
-            <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
             </svg>
-            <p class="text-green-700 font-medium"><%= notice %></p>
+            <p class="text-green-800 font-medium"><%= notice %></p>
           </div>
         </div>
       </div>
     <% end %>
     
     <% if alert.present? %>
-      <div class="fixed top-20 right-4 z-50 animate-fade-in">
-        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg shadow-lg">
+      <div class="fixed top-20 right-4 z-50 max-w-md">
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-lg shadow-lg">
           <div class="flex items-center">
-            <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-5 h-5 text-red-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
             </svg>
-            <p class="text-red-700 font-medium"><%= alert %></p>
+            <p class="text-red-800 font-medium"><%= alert %></p>
           </div>
         </div>
       </div>
     <% end %>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+    <main class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
       <%= yield %>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white/80 backdrop-blur-sm border-t border-gray-200 mt-12">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div class="text-center text-gray-600">
-          <p class="font-semibold text-sm">Pola - Simple, Fast, Free Polls</p>
-          <p class="text-xs mt-1">Create polls and collect votes instantly. No sign-up required.</p>
+    <footer class="relative bg-white border-t border-gray-200 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold">P</span>
+            </div>
+            <span class="text-lg font-bold text-gray-900">Pola</span>
+          </div>
+          <p class="text-gray-600 mb-4">Beautiful polls, instant results · No sign-up required</p>
+          <p class="text-sm text-gray-500">© 2025 Pola. Made with ♥ for the web.</p>
         </div>
       </div>
     </footer>

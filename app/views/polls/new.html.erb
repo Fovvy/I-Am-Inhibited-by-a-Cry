@@ -1,74 +1,134 @@
 <div class="max-w-3xl mx-auto">
-  <div class="mb-8">
-    <%= link_to root_path, class: "text-gray-600 hover:text-gray-900 inline-flex items-center" do %>
-      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+  <!-- Back Button -->
+  <%= link_to root_path, class: "group inline-flex items-center mb-6 text-gray-600 hover:text-rose-600 font-semibold transition-colors" do %>
+    <div class="w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center mr-2 shadow-md group-hover:shadow-lg transition-all border-2 border-gray-200 group-hover:border-rose-300">
+      <svg class="w-4 h-4 transform group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
       </svg>
-      Back to Home
-    <% end %>
-  </div>
+    </div>
+    <span>Back to Home</span>
+  <% end %>
 
-  <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-    <h1 class="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Create a New Poll</h1>
-    <p class="text-gray-600 mb-8">Fill in the details below to create your poll and start collecting votes.</p>
+  <!-- Main Create Form Card -->
+  <div class="relative bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl p-6 md:p-10 border-4 border-white/50 overflow-hidden">
+    <!-- Decorative Background -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-rose-200 to-violet-200 rounded-full blur-3xl opacity-20 -z-10"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-amber-200 to-pink-200 rounded-full blur-3xl opacity-20 -z-10"></div>
+    
+    <!-- Header -->
+    <div class="text-center mb-8 relative z-10">
+      <div class="inline-block mb-4 text-6xl animate-bounce">🎨</div>
+      <h1 class="text-4xl md:text-5xl font-black mb-3 bg-gradient-to-r from-rose-500 via-pink-500 to-violet-600 bg-clip-text text-transparent">
+        Create Your Poll
+      </h1>
+      <p class="text-lg text-gray-700 font-medium">Make it beautiful. Make it yours. ✨</p>
+    </div>
 
-    <%= form_with model: @poll, local: true, class: "space-y-6" do |form| %>
+    <%= form_with model: @poll, local: true, class: "space-y-8 relative z-10" do |form| %>
       <% if @poll.errors.any? %>
-        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
-          <h3 class="text-red-800 font-semibold mb-2"><%= pluralize(@poll.errors.count, "error") %> prohibited this poll from being saved:</h3>
-          <ul class="list-disc list-inside text-red-700">
-            <% @poll.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+        <div class="bg-gradient-to-r from-red-50 to-pink-50 border-3 border-red-300 p-5 rounded-2xl shadow-lg">
+          <div class="flex items-start space-x-3">
+            <span class="text-3xl">⚠️</span>
+            <div>
+              <h3 class="text-red-800 font-black text-lg mb-2"><%= pluralize(@poll.errors.count, "error") %> found:</h3>
+              <ul class="space-y-1 text-red-700 font-semibold">
+                <% @poll.errors.full_messages.each do |message| %>
+                  <li class="flex items-center"><span class="mr-2">•</span><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
         </div>
       <% end %>
 
-      <div>
-        <%= form.label :title, "Poll Question", class: "block text-sm font-semibold text-gray-700 mb-2" %>
-        <%= form.text_field :title, class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition", placeholder: "e.g., What's your favorite programming language?" %>
+      <!-- Poll Question -->
+      <div class="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-6 border-2 border-rose-200 shadow-md">
+        <%= form.label :title, class: "block text-lg font-black text-gray-900 mb-3 flex items-center" do %>
+          <span class="text-2xl mr-2">❓</span>
+          Your Amazing Question
+        <% end %>
+        <%= form.text_field :title, class: "w-full px-5 py-4 text-lg font-bold border-3 border-rose-300 rounded-2xl focus:ring-4 focus:ring-rose-200 focus:border-rose-400 transition-all shadow-inner bg-white", placeholder: "e.g., What's your favorite ice cream flavor? 🍦", required: true %>
       </div>
 
-      <div>
-        <%= form.label :description, "Description (Optional)", class: "block text-sm font-semibold text-gray-700 mb-2" %>
-        <%= form.text_area :description, rows: 3, class: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition", placeholder: "Add more context to your poll..." %>
+      <!-- Description -->
+      <div class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-6 border-2 border-violet-200 shadow-md">
+        <%= form.label :description, class: "block text-lg font-black text-gray-900 mb-3 flex items-center" do %>
+          <span class="text-2xl mr-2">📝</span>
+          Add Context (Optional)
+        <% end %>
+        <%= form.text_area :description, rows: 3, class: "w-full px-5 py-4 text-base font-medium border-3 border-violet-300 rounded-2xl focus:ring-4 focus:ring-violet-200 focus:border-violet-400 transition-all shadow-inner bg-white resize-none", placeholder: "Tell voters more about your poll..." %>
       </div>
 
-      <div>
-        <label class="block text-sm font-semibold text-gray-700 mb-3">Poll Options</label>
-        <div id="options-container" class="space-y-3">
+      <!-- Poll Options -->
+      <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 border-2 border-amber-200 shadow-md">
+        <label class="block text-lg font-black text-gray-900 mb-4 flex items-center">
+          <span class="text-2xl mr-2">🎯</span>
+          Poll Choices (Min: 2)
+        </label>
+        <div id="options-container" class="space-y-3 mb-4">
           <%= form.fields_for :options do |option_form| %>
-            <div class="option-field flex items-center gap-2">
-              <%= option_form.text_field :title, class: "flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition", placeholder: "Enter an option..." %>
-              <button type="button" class="remove-option px-4 py-3 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition font-medium">Remove</button>
+            <div class="option-field group flex items-center gap-2">
+              <span class="text-2xl">•</span>
+              <%= option_form.text_field :title, class: "flex-1 px-4 py-3 text-base font-semibold border-3 border-amber-300 rounded-xl focus:ring-3 focus:ring-amber-200 focus:border-amber-400 transition-all bg-white shadow-sm", placeholder: "Add an option...", required: true %>
+              <button type="button" class="remove-option group relative">
+                <div class="absolute inset-0 bg-red-400 rounded-xl blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
+                <div class="relative px-4 py-3 bg-gradient-to-r from-red-400 to-pink-500 text-white rounded-xl font-bold hover:from-red-500 hover:to-pink-600 transition-all shadow-md hover:shadow-lg text-sm flex items-center space-x-1">
+                  <span>🗑️</span>
+                  <span class="hidden sm:inline">Remove</span>
+                </div>
+              </button>
             </div>
           <% end %>
         </div>
-        <button type="button" id="add-option" class="mt-3 px-4 py-2 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition font-medium inline-flex items-center">
-          <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-          </svg>
-          Add Option
+        <button type="button" id="add-option" class="group relative w-full">
+          <div class="absolute inset-0 bg-gradient-to-r from-amber-300 to-orange-400 rounded-xl blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
+          <div class="relative bg-gradient-to-r from-amber-400 to-orange-500 text-white px-5 py-3 rounded-xl font-black hover:from-amber-500 hover:to-orange-600 transition-all shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 border-2 border-white/50">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/>
+            </svg>
+            <span>Add Another Option</span>
+          </div>
         </button>
       </div>
 
-      <div class="bg-gray-50 rounded-lg p-6 space-y-4">
-        <h3 class="font-semibold text-gray-900">Advanced Options</h3>
+      <!-- Advanced Settings -->
+      <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-6 border-2 border-teal-200 shadow-md">
+        <h3 class="text-lg font-black text-gray-900 mb-4 flex items-center">
+          <span class="text-2xl mr-2">⚙️</span>
+          Power Settings
+        </h3>
         
-        <div class="flex items-center">
-          <%= form.check_box :allow_multiple, class: "w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500" %>
-          <%= form.label :allow_multiple, "Allow multiple votes from same person", class: "ml-3 text-gray-700" %>
-        </div>
+        <div class="space-y-4">
+          <label class="flex items-center p-4 bg-white rounded-xl border-2 border-teal-200 cursor-pointer hover:border-teal-400 hover:shadow-md transition-all">
+            <%= form.check_box :allow_multiple, class: "w-6 h-6 text-teal-600 border-gray-300 rounded-lg focus:ring-teal-500 cursor-pointer" %>
+            <div class="ml-4">
+              <span class="text-base font-bold text-gray-900 flex items-center">
+                <span class="mr-2">🔄</span>
+                Allow Multiple Votes
+              </span>
+              <p class="text-sm text-gray-600 mt-1">Let people vote more than once</p>
+            </div>
+          </label>
 
-        <div>
-          <%= form.label :closes_at, "Close poll at (Optional)", class: "block text-sm font-semibold text-gray-700 mb-2" %>
-          <%= form.datetime_local_field :closes_at, class: "px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" %>
+          <div class="p-4 bg-white rounded-xl border-2 border-teal-200">
+            <%= form.label :closes_at, class: "block text-base font-bold text-gray-900 mb-2 flex items-center" do %>
+              <span class="mr-2">⏰</span>
+              Auto-Close Poll (Optional)
+            <% end %>
+            <%= form.datetime_local_field :closes_at, class: "w-full px-4 py-3 text-base font-semibold border-2 border-teal-300 rounded-xl focus:ring-3 focus:ring-teal-200 focus:border-teal-400 transition-all shadow-sm" %>
+          </div>
         </div>
       </div>
 
-      <div class="flex gap-4 pt-4">
-        <%= form.submit "Create Poll", class: "flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-200 shadow-lg hover:shadow-xl cursor-pointer" %>
-        <%= link_to "Cancel", root_path, class: "px-8 py-4 border-2 border-gray-300 text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition" %>
+      <!-- Submit Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 pt-4">
+        <div class="flex-1 relative group">
+          <div class="absolute inset-0 bg-gradient-to-r from-rose-400 to-violet-500 rounded-2xl blur-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
+          <%= form.submit "🚀 Create My Poll!", class: "relative w-full bg-gradient-to-r from-rose-500 to-violet-600 text-white px-8 py-5 rounded-2xl font-black text-xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer border-4 border-white/50" %>
+        </div>
+        <%= link_to root_path, class: "sm:w-40 text-center px-6 py-5 border-4 border-gray-300 text-gray-700 rounded-2xl font-black hover:bg-gray-50 hover:border-gray-400 transition-all shadow-md hover:shadow-lg" do %>
+          <span>Cancel</span>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -80,12 +140,19 @@
     const addButton = document.getElementById('add-option');
     let optionIndex = <%= @poll.options.size %>;
 
-    // Add new option
+    // Add new option with fun styling
     addButton.addEventListener('click', function() {
       const optionHtml = `
-        <div class="option-field flex items-center gap-2">
-          <input type="text" name="poll[options_attributes][${optionIndex}][title]" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition" placeholder="Enter an option...">
-          <button type="button" class="remove-option px-4 py-3 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition font-medium">Remove</button>
+        <div class="option-field group flex items-center gap-2">
+          <span class="text-2xl">•</span>
+          <input type="text" name="poll[options_attributes][${optionIndex}][title]" class="flex-1 px-4 py-3 text-base font-semibold border-3 border-amber-300 rounded-xl focus:ring-3 focus:ring-amber-200 focus:border-amber-400 transition-all bg-white shadow-sm" placeholder="Add an option..." required>
+          <button type="button" class="remove-option group relative">
+            <div class="absolute inset-0 bg-red-400 rounded-xl blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
+            <div class="relative px-4 py-3 bg-gradient-to-r from-red-400 to-pink-500 text-white rounded-xl font-bold hover:from-red-500 hover:to-pink-600 transition-all shadow-md hover:shadow-lg text-sm flex items-center space-x-1">
+              <span>🗑️</span>
+              <span class="hidden sm:inline">Remove</span>
+            </div>
+          </button>
         </div>
       `;
       container.insertAdjacentHTML('beforeend', optionHtml);

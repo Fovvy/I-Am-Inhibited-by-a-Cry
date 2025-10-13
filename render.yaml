@@ -2,8 +2,9 @@ services:
   - type: web
     name: pola
     runtime: ruby
+    plan: free
     buildCommand: bundle install && rails db:migrate && rails assets:precompile
-    startCommand: rails server -b 0.0.0.0 -p $PORT
+    startCommand: bundle exec rails server -b 0.0.0.0 -p $PORT
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -17,8 +18,11 @@ services:
         value: true
       - key: SECRET_KEY_BASE
         generateValue: true
+      - key: RAILS_MAX_THREADS
+        value: 5
 
 databases:
   - name: pola-db
     databaseName: pola_production
     user: pola
+    plan: free
