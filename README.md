@@ -1,4 +1,4 @@
-# Pola - Simple Poll Creator
+# Poll..inator? - Just a Simple Poll Creator
 
 <div align="center">
 
