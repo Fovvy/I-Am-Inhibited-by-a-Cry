@@ -49,7 +49,7 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/pola.git
+   git clone https://github.com/Fovvy/I-Am-Inhibited-by-a-Cry.git
    cd pola
    ```
 
